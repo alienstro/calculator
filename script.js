@@ -3,7 +3,13 @@
 const display = document.getElementById("display");
 
 function appendString(input) {
-    display.value += input;
+    const lastChar = display.value.slice(-1); 
+    
+    if ((input === '+' || input === '-' || input === '*' || input === '/') && (lastChar === '+' || lastChar === '-' || lastChar === '*' || lastChar === '/')) {
+        display.value = display.value.slice(0, -1) + input;
+    } else {
+        display.value += input;
+    }
 }
 
 function clearDisplay() {
